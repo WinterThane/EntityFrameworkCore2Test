@@ -13,5 +13,10 @@ namespace DataProject
         {
             optionsBuilder.UseSqlServer(Config.connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SamuraiBattle>().HasKey(s => new { s.SamuraiId, s.BattleId });
+        }
     }
 }
